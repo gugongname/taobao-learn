@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html class="center">
+
+<head>
+    <meta charset="utf-8" />
+    <title>搜索宝贝</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="aplus-rhost-g" content="hd.mmstat.com" />
+    <link rel="stylesheet" type="text/css" href="../static/font/iconfont.css">
+    <style>
+        .center {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            left: 0;
+        }
+
+        .main {
+            height: 100%;
+        }
+
+        .header {
+            width: 100%;
+            height: 45px;
+            z-index: 5px;
+        }
+
+        .nav-left {
+            float: left;
+            height: 44px;
+            width: 276px;
+        }
+
+        .small-nav {
+            height: 30px;
+            width: 262px;
+            margin: 7px;
+            background-color: #E3E3E5;
+            border-radius: 5px;
+        }
+
+        .small-nav-left {
+            float: left;
+            position: relative;
+        }
+
+        .small-nav-right {
+            float: right;
+            padding-right: 12px;
+        }
+
+        .nav-right {
+            float: right;
+            width: 44px;
+            height: 44px;
+            position: relative;
+        }
+
+        .nav-right a {
+            position: absolute;
+            top: 8px;
+            left: 10.5px;
+        }
+
+        .shop {
+            margin-left: 4px;
+            line-height: 30px;
+            color: #989898;
+            float: left;
+            margin-right: 3px;
+        }
+
+        .icon-one {
+            z-index: 20;
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 9px solid #484E51;
+            position: fixed;
+            top: 40px;
+            left: 24px;
+            display: none;
+        }
+
+        .menu {
+            width: 140px;
+            height: 108px;
+            background-color: #484E51;
+            position: absolute;
+            top: 40px;
+            z-index: 20;
+            left: 11px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .menu ur li {
+            list-style-type: none;
+            line-height: 35px;
+            margin-left: 32px;
+            color: #C6C8C9;
+            border-bottom: 1px solid #c6c8c9;
+        }
+
+        .icon {
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #989898;
+            margin-top: 13px;
+            float: left;
+        }
+
+        .column {
+            height: 39px;
+            width: 100%;
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+
+        .column-one {
+            float: left;
+            width: 108px;
+            height: 39px;
+        }
+
+        .column-one-f {
+            font-size: 14px;
+            text-align: center;
+            line-height: 39px;
+            margin-left: 16px;
+            margin-right: 3px;
+            float: left;
+            color: #FF4500;
+        }
+
+        .column-one-d {
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #FF4500;
+            float: left;
+            margin-top: 17px;
+        }
+
+        .column-one-r {
+            width: 320px;
+            position: fixed;
+            top: 87px;
+            background-color: #FFFFFF;
+            z-index: 10;
+            display: none;
+        }
+
+        .column-one-r ur li {
+            list-style-type: none;
+            line-height: 39px;
+            margin-left: 21px;
+            border-bottom: 1px solid #D7D6D9;
+        }
+        .sort-a,
+        .sort-b,
+        .sort-c,
+        .sort-d{
+            width: 6px;
+            height: 11px;
+            border-color:#ff4500;
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            transform: rotate(45deg);
+            float: right;
+            margin-right: 25px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .column-one-border {
+            float: left;
+            border-right: solid 1px #999;
+            height: 25px;
+            margin-top: 6px;
+        }
+
+        .column-tow {
+            float: left;
+            height: 39px;
+            width: 81px;
+        }
+
+        .column-tow span {
+            line-height: 39px;
+            font-size: 14px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .column-tow-border {
+            float: left;
+            border-right: solid 1px #999;
+            height: 25px;
+            margin-top: 6px;
+        }
+
+        .column-three {
+            height: 39px;
+            width: 81px;
+            float: left;
+            border-right: solid 1px #999;
+        }
+
+        .column-three span {
+            line-height: 39px;
+            font-size: 14px;
+            padding-left: 12px;
+            padding-right: 8px;
+        }
+
+        .column-four {
+            width: 47px;
+            height: 39px;
+            float: left;
+            position: relative;
+        }
+
+        .column-four span {
+            position: absolute;
+            top: 9px;
+            right: 10px;
+            position: absolute;
+            top: 8px;
+            left: 12px;
+        }
+
+        .goods {
+            width: 100%;
+            height: 100%;
+            background-color: #FAFAFA;
+            position: relative;
+            border-bottom: 1px solid #999;
+        }
+
+        .background {
+            width: 100%;
+            height: 500px;
+            position: fixed;
+            top: 90px;
+            z-index: 9;
+            background: #000;
+            opacity: 0.7;
+            display: none;
+        }
+
+        .container {
+            width: 100%;
+            height: 129px;
+            background-color: #FAFAFA;
+            position: relative;
+            border-bottom: 1px solid #999;
+        }
+
+        .container-one {
+            width: 308px;
+            height: 104px;
+            position: absolute;
+            top: 13px;
+            left: 6px;
+            background-color: #FAFAFA;
+        }
+
+        .container-one-left {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-left: 5px;
+            margin-right: 10px;
+            float: left;
+        }
+
+        .container-one-right {
+            width: 175px;
+            height: 94px;
+            margin-top: 2px;
+            margin-bottom: 4px;
+            float: left;
+            background-color: #FAFAFA;
+        }
+
+        .names {
+            height: 44px;
+            width: 175px;
+            line-height: 22px;
+            color: #4b566a;
+            font-size: 14px;
+            margin-top: 0px;
+            margin-bottom: 3px;
+        }
+
+        .price {
+            height: 26px;
+            width: 175px;
+            line-height: 24px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .price-a {
+            font-size: 16px;
+            color: #eb5211;
+        }
+
+        .price-a-a {
+            font-style: normal;
+        }
+
+        .price-a-b {
+            font-style: normal;
+        }
+
+        .price-b {
+            color: #999;
+            font-size: 11px;
+        }
+
+        .price-c {
+            color: #999;
+        }
+
+        .price-c-a {
+            color: #999;
+            font-size: 11px;
+        }
+
+        .price-d {
+            width: 175px;
+            height: 20px;
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .price-d-a {
+            margin-top: 0px;
+            float: left;
+            height: 19px;
+        }
+
+        .price-d-b {
+            width: 115px;
+            height: 20px;
+            float: left;
+            text-align: center;
+        }
+
+        .goods-tow {
+            width: 100%;
+            height: 100%;
+            background-color: #fafafa;
+            display: none;
+        }
+
+        .contain {
+            width: 100%;
+            height: 210px;
+        }
+
+        .contain-one {
+            float: left;
+            width: 50%;
+            border-bottom: 1px solid #e0e1e1;
+            border-left: 1px solid #e0e1e1;
+            margin-left: -1px;
+            padding: 12px 0;
+            overflow: hidden;
+            height: 185px;
+
+        }
+
+        .contain-tow {
+            padding: 0 12px;
+            height: 184px;
+            width: 136px;
+        }
+
+        .img {
+            width: 100%;
+            height: 136px;
+            margin-bottom: 5px;
+            background-color: red;
+        }
+
+        .batop {
+            width: 100%;
+            height: 32px;
+            margin-top: 12px;
+        }
+
+        .batop-o {
+            line-height: 12px;
+            height: 12px;
+            text-align: left;
+        }
+
+        .batop-o-a {
+            font-size: 14px;
+            color: #eb5211;
+            font-style: normal;
+        }
+
+        .batop-o-a-1 {
+            margin-right: -2px;
+        }
+
+        .batop-o-b {
+            color: #999;
+            font-size: 10px;
+            margin-bottom: 0;
+        }
+
+        .batop-t {
+            height: 20px;
+            margin-top: -16px;
+        }
+
+        .batop-t-a {
+            font-size: 12px;
+            color: #999;
+            overflow: hidden;
+            line-height: 24px;
+        }
+
+        .goods-three {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.7;
+            z-index: 103;
+            display: none;
+        }
+
+        .goods-four {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 90%;
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+            z-index: 105;
+            overflow-y: scroll;
+        }
+
+        .goods-f-head {
+            width: 100%;
+            height: 66px;
+            border: 2px solid #EDEDEE;
+
+        }
+
+        .wrap-center {
+            line-height: 28px;
+            height: 28px;
+            margin: 21px 10px;
+        }
+
+        .wrap-a {
+            font-size: 14px;
+            margin-right: 25px;
+        }
+
+        .search input {
+            font-size: 14px;
+            height: 28px;
+            border-radius: 4px;
+            line-height: 28px;
+            display: inline-block;
+            width: 63px;
+            text-align: left;
+            outline: none;
+            background: #f2f2f2;
+            border: 0;
+        }
+
+        .goods-f-center {
+            padding: 0px 4% 10px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .title {
+            line-height: 28px;
+            height: 28px;
+            margin: 10px 0;
+        }
+
+        .title-left {
+            margin: 21px 10px;
+            font-size: 14px;
+        }
+
+        .title-center {
+            color: #ff5000;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            display: inline-block;
+            font-size: 12px;
+            margin-left: 4px;
+            line-height: 28px;
+            width: 50%;
+        }
+
+        .title-right {
+            float: right;
+            width: 8px;
+            height: 8px;
+            border-color: #9A9A9A;
+            border-style: solid;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            margin-top: 1px;
+            margin-right: 0px;
+        }
+
+        .colum {
+            height: 30px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .colum-center {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .colum-center li {
+            float: left;
+            border-radius: 8px;
+            line-height: 28px;
+            height: 28px;
+            width: 30%;
+            margin: 0 3% 15px 0;
+            text-align: center;
+            background: #f2f2f2;
+            display: inline-block;
+            font-size: 15px;
+            color: #000;
+        }
+
+        .goods-f-bootm {
+            padding: 0px 4% 10px;
+        }
+
+        .ole-left {
+            line-height: 28px;
+            height: 28px;
+            margin: 10px 0;
+        }
+
+        .ole-center {
+            height: 30px;
+            margin-top: 10px;
+            overflow: hidden;
+            padding: 0 5px;
+        }
+
+        .ole-right {
+            float: right;
+            width: 8px;
+            height: 8px;
+            border-color: #9A9A9A;
+            border-style: solid;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            margin-top: 1px;
+            margin-right: 0px;
+        }
+
+        .sdaw {
+            height: 30px;
+            margin-top: 10px;
+            overflow: hidden;
+            padding: 0 5px;
+        }
+
+        .sdaw-a {
+            height: 30px;
+            margin-top: 10px;
+            overflow: hidden;
+            padding: 0 5px;
+        }
+
+        .sdaw-b {
+            height: 30px;
+            margin-top: 10px;
+            overflow: hidden;
+            padding: 0 5px;
+        }
+
+        .btm {
+            position: fixed;
+            bottom: 0px;
+            right: 0;
+            width: 90%;
+            display: none;
+        }
+
+        .btm-left {
+            width: 50%;
+            height: 48px;
+            background: #FFF;
+            line-height: 48px;
+            float: left;
+            text-align: center;
+            border-top: 1px solid #e7e7e7;
+
+        }
+
+        .btm-right {
+            width: 50%;
+            height: 48px;
+            background: #ff5000;
+            line-height: 48px;
+            float: left;
+            text-align: center;
+            border-top: 1px solid #ff5000;
+            color: #fff;
+
+        }
+    </style>
+
+<body class="main" style="margin:0px;overflow-y:scroll;">
+    <div class="header">
+        <div class="nav-left">
+            <div class="small-nav">
+
+                <div class="small-nav-left">
+                    <span class="shop">
+                        宝贝
+                    </span>
+                    <span class="icon-one"></span>
+                    <div class="menu">
+                        <ur>
+                            <li class="menu-one">宝贝</li>
+                            <li class="menu-tow">店铺</li>
+                            <li class="menu-three">天猫</li>
+                        </ur>
+                    </div>
+                    <span class="icon"></span>
+                    <input style="border: 0px;outline:none;cursor: pointer;background-color:#E3E3E5" type="text"
+                        name="search">
+                </div>
+                <div class="small-nav-right">
+                    <i class="iconfont  icon-sousuo"></i>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a class="iconfont icon-zhuye" href="http//www.taobao.com"></a>
+        </div>
+    </div>
+    <!--头部-->
+    <div class="column">
+        <div class="column-one">
+            <span class="column-one-f">
+                综合排序
+            </span>
+            <span class="column-one-d"></span>
+            <div class="column-one-r">
+                <ur>
+                    <li class="sort">综合排序
+                        <span class="sort-a" ></span>
+                    </li>
+                    <li class="sort-one">价格从高到低
+                         <span class="sort-b"></span>
+                    </li>
+                    <li class="sort-tow">价格从低到高
+                        <span class="sort-c"></span>
+                    </li>
+                    <li class="sort-three">信用排序
+                        <span class="sort-d"></span>
+                    </li>
+                </ur>
+            </div>
+        </div>
+        <span class="column-one-border"></span>
+        <div class="column-tow">
+            <span>销量优先</span>
+        </div>
+        <span class="column-tow-border"></span>
+        <div class="column-three">
+            <span class="iconfont icon-shaixuan">筛选</span>
+        </div>
+        <div class="column-four">
+            <span class="iconfont  icon-caidan">
+            </span>
+        </div>
+    </div>
+    <!--导航-->
+    <div class="goods">
+        <div class="background"></div>
+        <div class="container">
+            <div class="container-one">
+                <div class="container-one-left">
+                </div>
+                <div class="container-one-right">
+                    <h3 class="names">月销过万旅行背包新款高中学生书包双肩包男</h3>
+                    <p class="price">
+                        <em class="price-a">
+                            <span class="price-a-a">¥</span>
+                            <span class="price-a-b">99.90</span>
+                        </em>
+                        <span class="price-b">¥</span>
+                        <del class="price-c">
+                            <span class="price-c-a">319</span>
+                        </del>
+                    </p>
+                    <div class="price-d">
+                        <span class="price-d-a">免运费</span>
+                        <span class="price-d-b">4162人付款</span>
+                        <span>广州</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容一-->
+    <div class="goods-tow">
+        <div class="contain">
+            <div class="contain-one">
+                <div class="contain-tow">
+                    <div class="img">
+                    </div>
+                    <div class="batop">
+                        <p class="batop-o">
+                            <em class="batop-o-a">
+                                <span class="batop-o-a-1">¥</span>
+                                <span>49</span>
+                            </em>
+                            <del class="batop-o-b">
+                                <span>¥</span>
+                                <span>159</span>
+                            </del>
+                        </p>
+                        <div class="batop-t">
+                            <p class="batop-t-a">4580人付款</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contain-one">
+                <div class="contain-tow">
+                    <div class="img">
+                    </div>
+                    <div class="batop">
+                        <p class="batop-o">
+                            <em class="batop-o-a">
+                                <span class="batop-o-a-1">¥</span>
+                                <span>49</span>
+                            </em>
+                            <del class="batop-o-b">
+                                <span>¥</span>
+                                <span>159</span>
+                            </del>
+                        </p>
+                        <div class="batop-t">
+                            <p class="batop-t-a">4580人付款</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容二-->
+    <div class="goods-three"></div>
+    <!--内容三-->
+    <div class="goods-four">
+        <div class="wrap">
+            <div class="goods-f-head">
+                <div class="wrap-center">
+                    <span class="wrap-a">价格区间&nbsp;&nbsp; (元)</span>
+                    <span class="search">
+                        <input type="text" name="jiage" placeholder="最低价">
+                        <span>-</span>
+                        <input type="text" name="jiageye" placeholder="最高价">
+                    </span>
+                </div>
+            </div>
+            <div class="goods-f-center">
+                <div class="title">
+                    <span class="title-left">折扣和服务&nbsp;:</span>
+                    <span class="title-center"></span>
+                    <span class="title-right"></span>
+                </div>
+                <div class="colum">
+                    <ul class="colum-center">
+                        <li class="chenmo">免运费</li>
+                        <li class="chenmo">天猫</li>
+                        <li class="chenmo">全球购</li>
+                        <li class="chenmo">消费者保障</li>
+                        <li class="chenmo">手机专享</li>
+                        <li class="chenmo">淘金币</li>
+                        <li class="chenmo">货到付款</li>
+                        <li class="chenmo">7天填退换</li>
+                        <li class="chenmo">促销</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="goods-f-bootm">
+                <div class="title">
+                    <span class="ole-left">区域&nbsp：</span>
+                    <span class="ole-center"></span>
+                    <span class="ole-right"></span>
+                </div>
+                <div class="sdaw">
+                    <ul class="colum-center">
+                        <li class="heiye">江浙沪</li>
+                        <li class="heiye">珠三角</li>
+                        <li class="heiye">北京</li>
+                        <li class="heiye">上海</li>
+                        <li class="heiye">广州</li>
+                        <li class="heiye">深圳</li>
+                        <li class="heiye">杭州</li>
+                        <li class="heiye">成都</li>
+                        <li class="heiye">厦门</li>
+                        <li class="heiye">海外</li>
+                    </ul>
+                </div>
+                <div class="title">
+                    <span class="ole-left">城市</span>
+                </div>
+                <div class="sdaw-a">
+                    <ul class="colum-center">
+                        <li class="zhong">长沙</li>
+                        <li class="zhong">长春</li>
+                        <li class="zhong">成都</li>
+                        <li class="zhong">重庆</li>
+                        <li class="zhong">大连</li>
+                        <li class="zhong">东莞</li>
+                        <li class="zhong">杭州</li>
+                        <li class="zhong">合肥</li>
+                        <li class="zhong">哈尔滨</li>
+                        <li class="zhong">济南</li>
+                        <li class="zhong">昆明</li>
+                        <li class="zhong">宁波</li>
+                        <li class="zhong">南京</li>
+                        <li class="zhong">南昌</li>
+                        <li class="zhong">青岛</li>
+                        <li class="zhong">苏州</li>
+                        <li class="zhong">石家庄</li>
+                        <li class="zhong">沈阳</li>
+                        <li class="zhong">天津</li>
+                        <li class="zhong">温州</li>
+                        <li class="zhong">无锡</li>
+                        <li class="zhong">武汉</li>
+                        <li class="zhong">西安</li>
+                        <li class="zhong">厦门</li>
+                        <li class="zhong">郑州</li>
+                    </ul>
+                </div>
+                <div class="title">
+                    <span class="ole-left">省份</span>
+                </div>
+                <div class="sdaw-b">
+                    <ul class="colum-center">
+                        <li class="shifu">安徽</li>
+                        <li class="shifu">澳门</li>
+                        <li class="shifu">福建</li>
+                        <li class="shifu">甘肃</li>
+                        <li class="shifu">广东</li>
+                        <li class="shifu">广西</li>
+                        <li class="shifu">贵州</li>
+                        <li class="shifu">海南</li>
+                        <li class="shifu">河北</li>
+                        <li class="shifu">河南</li>
+                        <li class="shifu">湖北</li>
+                        <li class="shifu">湖南</li>
+                        <li class="shifu">黑龙江</li>
+                        <li class="shifu">江苏</li>
+                        <li class="shifu">吉林</li>
+                        <li class="shifu">辽宁</li>
+                        <li class="shifu">内蒙古</li>
+                        <li class="shifu">宁夏</li>
+                        <li class="shifu">青海</li>
+                        <li class="shifu">山东</li>
+                        <li class="shifu">山西</li>
+                        <li class="shifu">陕西</li>
+                        <li class="shifu">四川</li>
+                        <li class="shifu">台湾</li>
+                        <li class="shifu">西藏</li>
+                        <li class="shifu">新疆</li>
+                        <li class="shifu">香港</li>
+                        <li class="shifu">云南</li>
+                        <li class="shifu">浙江</li>
+                    </ul>
+                </div>
+                <div class="btm">
+                        <div class="btm-left">重置</div>
+                        <div class="btm-right">确定</div>
+                    </div>
+            </div>
+           
+        </div>
+    </div>
+    <!--菜单-->
+</body>
+<script type="text/javascript" src="../static/js/jquery.js"></script>
+<script type="text/javascript">
+    $(".column-three").click(function () {
+        $(".center").css({ left: "-90%" });
+    })
+    $(".goods-three").click(function () {
+        $(".center").css({ left: "0" });
+    })
+    $(".shop").click(function () {
+        $(".icon-one").toggle();
+    })
+    $(".shop").click(function () {
+        $(".menu").toggle();
+    })
+    $(".column-one-f").click(function () {
+        $(".column-one-r").toggle();
+    })
+    $(".column-one-f").click(function () {
+        var ji = $(".column-one-r").css("display")
+        if (ji == "none") {
+            $(".background").css({ display: "none" })
+        }
+        else {
+            $(".background").css({ display: "block" })
+        }
+    })
+
+    $(".column-three").click(function () {
+        $(".goods-three").css({ display: "block" });
+    })
+    $(".column-three").click(function () {
+        $(".btm").css({ display: "block" });
+    })
+    $(".goods-three").click(function () {
+        $(".btm").css({ display: "none" })
+    })
+    $(".column-four").click(function () {
+        var mayou = $(".goods").css("display")
+        if (mayou == "block") {
+            $(".goods").css({ display: "none" })
+            $(".goods-tow").css({ display: "block" })
+        }
+        else {
+            $(".goods").css({ display: "block" })
+            $(".goods-tow").css({ display: "none" })
+        }
+    })
+    $(".goods-three").click(function () {
+        $(this).css({ display: "none" });
+    })
+    $(".title-right").click(function () {
+        var top = $(".colum").height()
+        if (top == 30) {
+            $(".colum").css({ height: "130px" })
+        }
+        else {
+            $(".colum").css({ height: "30px" })
+        }
+    })
+    $(".ole-right").click(function () {
+        var bop = $(".sdaw").height()
+        if (bop == 28) {
+            $(".sdaw").css({ height: "168px" })
+        }
+        else {
+            $(".sdaw").css({ height: "28px" })
+        }
+    })
+    $(".ole-right").click(function () {
+        var bop = $(".sdaw-a").height()
+        if (bop == 28) {
+            $(".sdaw-a").css({ height: "378px" })
+        }
+        else {
+            $(".sdaw-a").css({ height: "28px" })
+        }
+    })
+    $(".ole-right").click(function () {
+        var bop = $(".sdaw-b").height()
+        if (bop == 28) {
+            $(".sdaw-b").css({ height: "420px" })
+        }
+        else {
+            $(".sdaw-b").css({ height: "28px" })
+        }
+    })
+    $(".menu-one").click(function(){
+        $(".shop").text($(this).text())
+        $(".menu").hide()
+        $(".icon-one").hide()
+    })
+    $(".menu-tow").click(function(){
+        $(".shop").text($(this).text())
+        $(".menu").hide()
+        $(".icon-one").hide()
+    })
+    $(".menu-three").click(function(){
+        $(".shop").text($(this).text())
+        $(".menu").hide()
+        $(".icon-one").hide()
+    })
+    $(".sort").click(function(){
+        $(".column-one-f").text($(this).text())
+        $(this).css({color: "#ff4500"})
+        $(".sort-a").css({display: "block"})
+    })
+    $(".sort-one").click(function(){
+        $(".column-one-f").text($(this).text())
+        $(this).css({color: "#ff4500"})
+        $(".sort-b").css({display: "block"})
+    })
+    $(".sort-tow").click(function(){
+        $(".column-one-f").text($(this).text())
+        $(this).css({color: "#ff4500"})
+        $(".sort-c").css({display: "block"})
+    })
+    $(".sort-three").click(function(){
+        $(".column-one-f").text($(this).text())
+        $(this).css({color: "#ff4500"})
+        $(".sort-d").css({display: "block"})
+    })
+
+
+
+</script>
+
+</head>
+
+</html>
